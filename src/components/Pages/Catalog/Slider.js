@@ -1,46 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Carousel} from "react-bootstrap";
+import axios from "axios";
 
 function Slider(props) {
+
+    const [image_list, set_image_list] = useState([]);
+
+    const fetch = () => {
+        axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_API_URL}/slider`
+        })
+            .then(response => set_image_list(response.data))
+            .catch(error => console.error(error));
+    }
+
+    useEffect(() => {
+        fetch();
+    }, []);
+
     return (
         <Carousel>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://via.placeholder.com/468x60?text=Visit+Blogging.com+Now"
-                    alt="First slide"
-                />
-                <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://via.placeholder.com/468x60?text=Visit+Blogging.com+Now"
-                    alt="Second slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://via.placeholder.com/468x60?text=Visit+Blogging.com+Now"
-                    alt="Third slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
+            {
+                image_list.map((item) => {
+                    return <Carousel.Item>
+                        <div className="text-center">
+                            <img
+                                className="h-50"
+                                src={item.image}
+                            />
+                        </div>
+                    </Carousel.Item>
+                })
+            }
         </Carousel>
-);
+    );
 }
 
 export default Slider;
