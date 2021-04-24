@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './styles/_navber.scss';
-import {Nav} from "react-bootstrap";
+import {Nav, NavDropdown} from "react-bootstrap";
 import axios from "axios";
 
 function Login() {
@@ -20,25 +20,40 @@ function Cart() {
 }
 
 function Menu() {
+    const [menu_list, set_menu_list] = useState([]);
+
+    const fetch = () => {
+        axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_API_URL}/categories`
+        })
+            .then(response => set_menu_list(response.data))
+            .catch(error => console.error(error));
+    }
+
+    useEffect(() => {
+        fetch();
+    }, []);
+
     return (
-    <Nav
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-    >
-        <Nav.Item>
-            <Nav.Link href="/home">Active</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-            <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-            <Nav.Link eventKey="link-2">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-            <Nav.Link eventKey="disabled" disabled>
-                Disabled
-            </Nav.Link>
-        </Nav.Item>
+    <Nav>
+        {
+            menu_list.map((element) => {
+                if (element.items) {
+                    return <NavDropdown title={element.title} id="nav-dropdown">
+                        {
+                            element.items.map((item) => {
+                                return <NavDropdown.Item>{item}</NavDropdown.Item>
+                            })
+                        }
+                    </NavDropdown>
+                } else {
+                    return <Nav.Item>
+                        <Nav.Link>{element.title}</Nav.Link>
+                    </Nav.Item>
+                }
+            })
+        }
     </Nav>
     );
 }
