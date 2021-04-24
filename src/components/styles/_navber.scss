@@ -1,11 +1,32 @@
 @import 'main';
 
 .site-header {
- background-color: $main-header-background-color;
- color: $main-header-color;
-}
-.search-container{
- input {
   background-color: $main-header-background-color;
- }
+  color: $main-header-color;
+}
+
+.search-container {
+  input {
+    background-color: $main-header-background-color;
+  }
+}
+
+.nav {
+  .nav-link {
+    color: $main-header-color;
+    opacity: .7;
+    transition: opacity .3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .dropdown-item {
+   color: $dropdown-item-color;
+
+   &:hover {
+    background-color: $main-header-color;
+   }
+  }
 }
