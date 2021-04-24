@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './styles/_navber.scss';
+import './styles/_navbar.scss';
 import {Nav, NavDropdown} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
