@@ -1,0 +1,11 @@
+@import 'main';
+
+.site-header {
+ background-color: $main-header-background-color;
+ color: $main-header-color;
+}
+.search-container{
+ input {
+  background-color: $main-header-background-color;
+ }
+}
