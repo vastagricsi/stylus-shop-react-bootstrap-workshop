@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './styles/_navber.scss';
 import {Nav, NavDropdown} from "react-bootstrap";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Login() {
     return <small>Login or Register</small>;
@@ -45,13 +46,13 @@ function Menu() {
                         return <NavDropdown title={element.title} id="nav-dropdown">
                             {
                                 element.items.map((item) => {
-                                    return <NavDropdown.Item>{item}</NavDropdown.Item>
+                                    return <NavDropdown.Item as={Link} to={`/categories/${element.title}/${item}`}>{item}</NavDropdown.Item>
                                 })
                             }
                         </NavDropdown>
                     } else {
                         return <Nav.Item>
-                            <Nav.Link>{element.title}</Nav.Link>
+                            <Nav.Link as={Link} to={`/categories/${element.title}`}>{element.title}</Nav.Link>
                         </Nav.Item>
                     }
                 })
@@ -81,7 +82,7 @@ function Navbar(props) {
             <div className="container">
                 <div className="row">
                     <div className="col-6 d-flex align-items-center">
-                        {site_info.name}
+                        <Link to='/'>{site_info.name}</Link>
                     </div>
                     <div className="col-6">
                         <div className="login-container d-flex align-items-center justify-content-end">
