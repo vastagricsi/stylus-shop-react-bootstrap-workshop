@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Carousel} from "react-bootstrap";
 import axios from "axios";
+import '../../styles/Slider.scss';
 
 function Slider(props) {
 
