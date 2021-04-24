@@ -16,7 +16,9 @@ function SearchField() {
 }
 
 function Cart() {
-    return <button type="button" className="btn btn-primary">Cart</button>;
+    return <div className="form-group">
+        <button type="button" className="btn btn-primary">Cart</button>
+    </div>;
 }
 
 function Menu() {
@@ -36,25 +38,25 @@ function Menu() {
     }, []);
 
     return (
-    <Nav>
-        {
-            menu_list.map((element) => {
-                if (element.items) {
-                    return <NavDropdown title={element.title} id="nav-dropdown">
-                        {
-                            element.items.map((item) => {
-                                return <NavDropdown.Item>{item}</NavDropdown.Item>
-                            })
-                        }
-                    </NavDropdown>
-                } else {
-                    return <Nav.Item>
-                        <Nav.Link>{element.title}</Nav.Link>
-                    </Nav.Item>
-                }
-            })
-        }
-    </Nav>
+        <Nav>
+            {
+                menu_list.map((element) => {
+                    if (element.items) {
+                        return <NavDropdown title={element.title} id="nav-dropdown">
+                            {
+                                element.items.map((item) => {
+                                    return <NavDropdown.Item>{item}</NavDropdown.Item>
+                                })
+                            }
+                        </NavDropdown>
+                    } else {
+                        return <Nav.Item>
+                            <Nav.Link>{element.title}</Nav.Link>
+                        </Nav.Item>
+                    }
+                })
+            }
+        </Nav>
     );
 }
 
@@ -76,20 +78,22 @@ function Navbar(props) {
 
     return (
         <div className="site-header">
-            <div className="container-fluid">
+            <div className="container">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 d-flex align-items-center">
                         {site_info.name}
                     </div>
                     <div className="col-6">
-                        <div className="login-container">
+                        <div className="login-container d-flex align-items-center justify-content-end">
                             <Login/>
                         </div>
-                        <div className="search-container">
-                            <SearchField/>
-                        </div>
-                        <div className="cart-button-container">
-                            <Cart/>
+                        <div className="d-flex align-items-center justify-content-end">
+                            <div className="search-container">
+                                <SearchField/>
+                            </div>
+                            <div className="cart-button-container">
+                                <Cart/>
+                            </div>
                         </div>
                     </div>
                 </div>
