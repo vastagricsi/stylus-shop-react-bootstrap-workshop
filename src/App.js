@@ -21,7 +21,7 @@ function App() {
                     <Switch>
                         <Route path="/categories/:category/:subcategory" component={ItemListPage}/>
                         <Route path="/categories/:category" component={ItemListPage}/>
-                        <Route path="/product/:product" component={ItemDetailPage}/>
+                        <Route path="/product/:id" component={ItemDetailPage}/>
                         <Route path="/checkout" component={CheckOutPage}/>
 
                         <Route path="/login" component={LoginPage}/>
