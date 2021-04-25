@@ -6,7 +6,7 @@ function ProductCard({data}) {
         <Card>
             <Card.Img variant="top" src={data.image} />
             <Card.Body>
-                <Card.Title>{data.summary}</Card.Title>
+                <Card.Title>{data.title}{data.summary}</Card.Title>
                 <Card.Text>
                     {data.price}
                 </Card.Text>

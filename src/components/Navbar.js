@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './styles/_navbar.scss';
-import {Nav, NavDropdown} from "react-bootstrap";
+import {Button, Nav, NavDropdown} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
@@ -17,9 +17,7 @@ function SearchField() {
 }
 
 function Cart() {
-    return <div className="form-group">
-        <button type="button" className="btn btn-primary">Cart</button>
-    </div>;
+    return <div className="form-group"><Button variant="primary">Cart</Button></div>;
 }
 
 function Menu() {

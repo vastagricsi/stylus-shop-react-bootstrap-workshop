@@ -22,7 +22,11 @@ function Categories(props) {
             <h4>Categories</h4>
             <div className="row">
             {
-                categories.map(data => <div className="col-3"><CategoryCard data={data}/></div>)
+                categories.map(data => {
+                    //todo filter by category name
+                    //todo consider subcategory if any
+                    return <div className="col-3"><CategoryCard data={data}/></div>
+                })
             }
             </div>
         </div>
