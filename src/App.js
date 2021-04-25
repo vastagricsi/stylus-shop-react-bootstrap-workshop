@@ -9,32 +9,35 @@ import RegisterPage from "./components/Pages/User/RegisterPage";
 import CheckOutPage from "./components/Pages/Order/CheckOutPage";
 import PasswordResetPage from "./components/Pages/User/PasswordResetPage";
 import Home from "./components/Pages/Home";
+import {ShoppingCartProvider} from "./components/contexts/ShoppingCartContext";
 
 function App() {
     return (
         <BrowserRouter>
-            <header>
-                <Navbar/>
-            </header>
-            <section className="content">
-                <div className="container">
-                    <Switch>
-                        <Route path="/categories/:category/:subcategory" component={ItemListPage}/>
-                        <Route path="/categories/:category" component={ItemListPage}/>
-                        <Route path="/product/:id" component={ItemDetailPage}/>
-                        <Route path="/checkout" component={CheckOutPage}/>
+            <ShoppingCartProvider>
+                <header>
+                    <Navbar/>
+                </header>
+                <section className="content">
+                    <div className="container">
+                        <Switch>
+                            <Route path="/categories/:category/:subcategory" component={ItemListPage}/>
+                            <Route path="/categories/:category" component={ItemListPage}/>
+                            <Route path="/product/:id" component={ItemDetailPage}/>
+                            <Route path="/checkout" component={CheckOutPage}/>
 
-                        <Route path="/login" component={LoginPage}/>
-                        <Route path="/register" component={RegisterPage}/>
-                        <Route path="/reset-password" component={PasswordResetPage}/>
+                            <Route path="/login" component={LoginPage}/>
+                            <Route path="/register" component={RegisterPage}/>
+                            <Route path="/reset-password" component={PasswordResetPage}/>
 
-                        <Route path="/" component={Home}/>
-                    </Switch>
-                </div>
-            </section>
-            <footer>
-                <Footer/>
-            </footer>
+                            <Route path="/" component={Home}/>
+                        </Switch>
+                    </div>
+                </section>
+                <footer>
+                    <Footer/>
+                </footer>
+            </ShoppingCartProvider>
         </BrowserRouter>
     );
 }

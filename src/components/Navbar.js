@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './styles/_navbar.scss';
 import {Button, Nav, NavDropdown} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {ShoppingCartContext} from "./contexts/ShoppingCartContext";
 
 function Login() {
     return <small>Login or Register</small>;
@@ -75,12 +76,15 @@ function Navbar(props) {
         fetch();
     }, []);
 
+    const {my_name} = useContext(ShoppingCartContext)
+
     return (
         <div className="site-header">
             <div className="container">
                 <div className="row">
                     <div className="col-6 d-flex align-items-center">
                         <Link to='/'>{site_info.name}</Link>
+                        <small>{my_name}</small>
                     </div>
                     <div className="col-6">
                         <div className="login-container d-flex align-items-center justify-content-end">
