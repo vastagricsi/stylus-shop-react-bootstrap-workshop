@@ -18,7 +18,11 @@ function SearchField() {
 }
 
 function Cart() {
-    return <div className="form-group"><Button variant="primary">Cart</Button></div>;
+    return (
+        <div className="form-group">
+            <Button variant="primary" onClick={useContext(ShoppingCartContext).set_my_name('YOUR FINGER WAS ON THE BUTTON')}>Cart</Button>
+        </div>
+    );
 }
 
 function Menu() {
